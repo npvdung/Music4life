@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/controllerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="45dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/controllerField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/skipPrevButton"
+                android:layout_width="@dimen/player_icon_size"
+                android:layout_height="@dimen/player_icon_size"
+                android:background="@drawable/ic_skip_previous_24dp"
+                style="@style/ExoMediaButton.Previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/pauseButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+            <ImageButton
+                android:id="@+id/skipNextButton"
+                android:layout_width="@dimen/player_icon_size"
+                android:layout_height="@dimen/player_icon_size"
+                android:background="@drawable/ic_skip_next_24dp"
+                style="@style/ExoMediaButton.Next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pauseButton"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+            <ImageButton
+                android:id="@+id/pauseButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_pause_24dp"
+                style="@style/ExoMediaButton.Pause"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/skipNextButton"
+                app:layout_constraintStart_toEndOf="@+id/skipPrevButton"
+                app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

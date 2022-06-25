@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.beethozart.viewmodels.PlayerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D5785D"
+        tools:context=".fragments.PlayerFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/playerToolBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#AF4A2C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/player_menu"
+            app:navigationIcon="@drawable/ic_keyboard_arrow_down_24dp"
+            app:title="@{viewModel.currentTitle}" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/coverCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/playModeCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerToolBar">
+
+            <ImageView
+                android:id="@+id/songImage"
+                android:layout_width="315dp"
+                android:layout_height="323dp"
+                android:layout_margin="40dp"
+                android:src="@drawable/gramophone" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/controllerCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="45dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playModeCard">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/controllerField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/elapsedTimeSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:value="@{viewModel.currentPosition}"
+                    android:valueFrom="0.0"
+                    android:valueTo="1.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/skipPrevButton"
+                    android:layout_width="@dimen/player_icon_size"
+                    android:layout_height="@dimen/player_icon_size"
+                    android:background="@drawable/ic_skip_previous_24dp"
+                    android:onClick="@{() -> viewModel.onGoPrev()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/pauseButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+                <ImageButton
+                    android:id="@+id/skipNextButton"
+                    android:layout_width="@dimen/player_icon_size"
+                    android:layout_height="@dimen/player_icon_size"
+                    android:background="@drawable/ic_skip_next_24dp"
+                    android:onClick="@{() -> viewModel.onGoNext()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/pauseButton"
+                    app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+                <ImageButton
+                    android:id="@+id/pauseButton"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/ic_pause_24dp"
+                    android:onClick="@{() -> viewModel.onPause()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/skipNextButton"
+                    app:layout_constraintStart_toEndOf="@+id/skipPrevButton"
+                    app:layout_constraintTop_toBottomOf="@+id/elapsedTimeSlider" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/playModeCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:contentPaddingLeft="20dp"
+            app:contentPaddingRight="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/controllerCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coverCard">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    android:onClick="@{() -> viewModel.onSetRepeatMode()}"
+                    app:icon="@drawable/ic_repeat_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    android:id="@+id/shuffleButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    android:onClick="@{() -> viewModel.onSetShuffleMode()}"
+                    app:icon="@drawable/ic_shuffle_24px"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    android:id="@+id/favoriteButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    android:onClick="@{() -> viewModel.addCurrentSongToFavorite()}"
+                    app:icon="@drawable/ic_favorite_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    android:id="@+id/queueButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_menu_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+            </GridLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/managerCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:contentPaddingLeft="20dp"
+            app:contentPaddingRight="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/controllerCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coverCard">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_repeat_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_shuffle_24px"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_favorite_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_menu_24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp" />
+            </GridLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

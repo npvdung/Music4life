@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/songManagerFragment">
+
+    <fragment
+        android:id="@+id/songManagerFragment"
+        android:name="com.example.beethozart.fragments.SongManagerFragment"
+        android:label="songManagerFragment"
+        tools:layout="@layout/fragment_song_manager">
+        <action
+            android:id="@+id/action_songManagerFragment_to_playlistManagerFragment"
+            app:destination="@id/playlistManagerFragment" />
+        <action
+            android:id="@+id/action_songManagerFragment_to_artistManagerFragment"
+            app:destination="@id/artistManagerFragment" />
+        <action
+            android:id="@+id/action_songManagerFragment_to_playerFragment"
+            app:destination="@id/playerManagerFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_songManagerFragment_to_onlineHomeFragment2"
+            app:destination="@id/onlineHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playlistManagerFragment"
+        android:name="com.example.beethozart.fragments.PlaylistManagerFragment"
+        android:label="PlaylistManagerFragment"
+        tools:layout="@layout/fragment_playlist_manager" >
+        <action
+            android:id="@+id/action_playlistManagerFragment_to_nestedPlaylistSongList"
+            app:destination="@id/nestedPlaylistSongList">
+            <argument
+                android:name="songList"
+                app:argType="com.example.beethozart.entities.SongList"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/artistManagerFragment"
+        android:name="com.example.beethozart.fragments.ArtistManagerFragment"
+        android:label="artistManagerFragment"
+        tools:layout="@layout/fragment_artist_manager" >
+        <action
+            android:id="@+id/action_artistManagerFragment_to_nestedArtistSongList"
+            app:destination="@id/nestedArtistSongList">
+            <argument
+                android:name="songList"
+                app:argType="com.example.beethozart.entities.SongList"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/playerManagerFragment"
+        android:name="com.example.beethozart.fragments.PlayerFragment"
+        android:label="PlayerManagerFragment"
+        tools:layout="@layout/fragment_player">
+        <argument
+            android:name="songList"
+            app:argType="com.example.beethozart.entities.SongList" />
+    </fragment>
+    <navigation android:id="@+id/nestedArtistSongList"
+        app:startDestination="@id/artistSongListFragment">
+        <fragment
+            android:id="@+id/artistSongListFragment"
+            android:name="com.example.beethozart.fragments.ArtistSongListFragment"
+            android:label="ArtistSongListFragment">
+            <argument
+                android:name="songList"
+                app:argType="com.example.beethozart.entities.SongList" />
+            <action
+                android:id="@+id/action_artistSongListFragment_to_playerManagerFragment"
+                app:destination="@id/playerManagerFragment"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+        </fragment>
+    </navigation>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.beethozart.fragments.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_onlineHomeFragment"
+            app:destination="@id/onlineHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.beethozart.fragments.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onlineHomeFragment"
+        android:name="com.example.beethozart.fragments.OnlineHomeFragment"
+        android:label="onlineHomeFragment" >
+        <action
+            android:id="@+id/action_onlineHomeFragment_to_playerManagerFragment"
+            app:destination="@id/playerManagerFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <navigation android:id="@+id/nestedPlaylistSongList"
+        app:startDestination="@id/playlistSongListFragment">
+        <fragment
+            android:id="@+id/playlistSongListFragment"
+            android:name="com.example.beethozart.fragments.PlaylistSongListFragment"
+            android:label="PlaylistSongListFragment" />
+        <argument
+            android:name="songList"
+            app:argType="com.example.beethozart.entities.SongList" />
+        <action
+            android:id="@+id/action_playlistSongListFragment_to_playerManagerFragment"
+            app:destination="@id/playerManagerFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </navigation>
+</navigation>

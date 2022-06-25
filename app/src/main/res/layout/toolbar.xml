@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/myTopAppBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#2196F3">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#AF4A2C"
+        app:menu="@menu/top_app_bar"
+        app:navigationIcon="@drawable/ic_menu_24dp"
+        app:title="@string/app_name" />
+
+</com.google.android.material.appbar.AppBarLayout>
+

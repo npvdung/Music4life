@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/songManagerFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_songs"
+        android:title="@string/song_list_item_text"/>
+    <item
+        android:id="@+id/playlistManagerFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_playlist"
+        android:title="@string/playlist_item_text"/>
+
+    <item
+        android:id="@+id/artistManagerFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_artist"
+        android:title="@string/artist_item_text"/>
+
+    <item
+        android:id="@+id/albumItem"
+        android:enabled="true"
+        android:icon="@drawable/ic_album"
+        android:title="@string/album_item_text"/>
+
+    <item
+        android:id="@+id/onlineHomeFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_album"
+        android:title="@string/online_music"/>
+</menu>

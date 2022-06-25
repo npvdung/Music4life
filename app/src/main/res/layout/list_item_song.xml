@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="song"
+            type="com.example.beethozart.entities.Song" />
+
+        <variable
+            name="clickListener"
+            type="com.example.beethozart.fragments.adapters.SongListener" />
+
+        <variable
+            name="moreClickListener"
+            type="com.example.beethozart.fragments.adapters.SongListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="@{() -> clickListener.onClick(song)}"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/moreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/songCover"
+                    android:layout_width="44dp"
+                    android:layout_height="51dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/song_cover_description"
+                    android:src="@drawable/note"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:albumCover="@{song}" />
+
+                <TextView
+                    android:id="@+id/songArtist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_mono_medium"
+                    android:includeFontPadding="true"
+                    android:text="@{song.artist}"
+                    android:textSize="@dimen/song_artist_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/songTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/songTitle" />
+
+                <TextView
+                    android:id="@+id/songTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:ellipsize="marquee"
+                    android:fontFamily="sans-serif"
+                    android:includeFontPadding="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="@{song.title}"
+                    android:textColor="@android:color/primary_text_light_nodisable"
+                    android:textSize="@dimen/song_title_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/songCover"
+                    app:layout_constraintTop_toTopOf="@+id/songCover"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/moreMenuButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:iconGravity="textStart"
+                    app:icon="@drawable/ic_more_vert_black_24dp"
+                    app:iconPadding="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/colorButtonNormal" />
+    </LinearLayout>
+</layout>

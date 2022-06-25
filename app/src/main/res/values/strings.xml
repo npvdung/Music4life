@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Music4life</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="song_cover_description">Song cover</string>
+    <string name="default_song_title">Song title</string>
+    <string name="default_song_artist">Unknown artist</string>
+
+    <string name="favorite">Favorite</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
+
+    <string name="song_list_item_text">Song list</string>
+    <string name="playlist_item_text">Playlist</string>
+    <string name="artist_item_text">Artist</string>
+    <string name="album_item_text">Album</string>
+
+    <string name="playlist_cover_desc">Playlist cover</string>
+    <string name="num_tracks_format">%1$d tracks</string>
+    <string name="default_playlist_name">Unknown</string>
+    <string name="default_playlist_num_tracks">1 track</string>
+
+    <string name="channel_name">Beethozart</string>
+    <string name="channel_description">Beethozart channel</string>
+
+    <string name="notification_title">test title</string>
+    <string name="notification_message">test message</string>
+
+    <string name="user_name_hint">User name</string>
+    <string name="password_hint">Password</string>
+    <string name="password_confirm_hint">Confirm password</string>
+    <string name="login_button_text">Login</string>
+    <string name="create_account_button_text">Create</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="online_music">Online</string>
+    <string name="log_out">Log Out</string>
+    <string name="playlist_fab_content_desc">Add playlist</string>
+    <string name="playlist_name_dialog_title">Playlist name</string>
+    <string name="playlist_name_hint">Playlist name</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="favorite_playlist">Favorite</string>
+</resources>
